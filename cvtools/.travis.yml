@@ -1,0 +1,29 @@
+dist: xenial
+sudo: required
+language: python
+install:
+  - rm -rf .eggs && pip install -e .
+#  - pip install pytest-cov
+#  - pip install coverage
+#  - pip install codecov
+cache:
+  pip: true
+python:
+  - '3.5'
+  - '3.6'
+  - '3.7'
+#script: coverage run -m pytest
+#script: python -m pytest --cov=cvtools
+#after_success: codecov
+script: pytest
+deploy:
+  provider: pypi
+  user: __token__
+  skip_existing: true
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    skip_cleanup: true
+    skip_upload_docs: true
+  password:
+    secure: bPHv3YdwV2ojRlrj/xwa0Og79+LfKGK+QSIvl4gYJd+V5UohYnqgJNepeiyvaKaYjiK1jtE4Uq7DdDleTXkJKhLpHY0eMLXGxEfJwyHtyXmqvecqACylEjLCJRmACpbYzNE31SJfUBNrqQIvG1YlmcEUoBf4JAgSSWCAuRGR8Zn86ioi5gVm/4LaOGGyvUgccxYLdmOjGm7N+4U14R2qGnDTKXLHFUwZ9icg4KoBMPiZo395GMWLoCsA5vVHbKAy7tcEUwMIRp6i4+BwFLzgxMFIqVPHegWUYnvX4MwfeCPasHcRXbBfD58/V8VFLh5OQDNZ1fDO1xfwx0xRJCBoaJqTYqmDuJCVItSSBWl9cN2xgCidHyWgYBlLaJZqa8fVZSrZ6zowHQvbBWYKI29A0eyLWbfr+ROzO1UuqjY870nNNl2XsMJSESvWv7M20Giu7HWUQm1YNTNP2Pi/20OrDDPAYCUQiC5UfiEZQOVr8o7ICU5AEP1SpKL+DbVHmv7t03ZXGGySN6At3sE023G3tt0B8/5wc/sL7bcJaQM28vimR0TE1G1dpv5RKwo5U1HhwqIzws0QOLbY+hdEeLohdshTxi4dfiCDRSkGn9ttpFq9c3cUkiG/l3h4n3QBY+zhgUxMXae04XBqh1qNkq5/xQT+fcHXkL0zMHgQwJLFVjA=

@@ -1,0 +1,12 @@
+Cython
+numpy>=1.11.1
+opencv-python
+matplotlib
+pillow
+tqdm
+# scikit-learn>=0.21
+mmcv>=0.2.10
+shapely>=1.6.4
+terminaltables
+flask
+requests
